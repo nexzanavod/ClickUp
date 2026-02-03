@@ -1,11 +1,9 @@
 import type { DashboardData } from "../types/clickup";
-import { StatCard } from "./StatCard";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { 
   Calendar, 
-  Clock, 
   Users, 
   Tag, 
   AlertCircle, 
@@ -13,7 +11,6 @@ import {
   ArrowLeft,
   ExternalLink,
   ListChecks,
-  TrendingUp,
   Target,
   Zap,
   Activity,
@@ -33,16 +30,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  AreaChart,
-  Area,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar
+  ResponsiveContainer
 } from "recharts";
 import { useState } from "react";
 
@@ -70,13 +58,6 @@ export function Dashboard({ data, onBack }: DashboardProps) {
     }));
   };
   
-  // Format time in hours
-  const formatTime = (milliseconds: number | null) => {
-    if (!milliseconds) return "N/A";
-    const hours = milliseconds / (1000 * 60 * 60);
-    return `${hours.toFixed(1)}h`;
-  };
-
   // Format date
   const formatDate = (timestamp: string | null) => {
     if (!timestamp) return "Not set";
@@ -89,12 +70,6 @@ export function Dashboard({ data, onBack }: DashboardProps) {
     const status = task.status.status;
     statusCounts[status] = (statusCounts[status] || 0) + 1;
   });
-  
-  const statusData = Object.entries(statusCounts).map(([name, value]) => ({
-    name,
-    value,
-    color: tasks.find(t => t.status.status === name)?.status.color || '#3b82f6',
-  }));
 
   // Calculate subtask status distribution (completed vs incomplete)
   const totalSubtasks = tasks.reduce((acc, t) => 

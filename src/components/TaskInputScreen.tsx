@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Search } from "lucide-react";
 
 interface TaskInputScreenProps {
@@ -12,7 +11,6 @@ export function TaskInputScreen({ onSubmit }: TaskInputScreenProps) {
   const [taskId, setTaskId] = useState("");
   const [apiKey, setApiKey] = useState(import.meta.env.VITE_CLICKUP_API_KEY || "");
   const [error, setError] = useState("");
-  const [showApiKey, setShowApiKey] = useState(!import.meta.env.VITE_CLICKUP_API_KEY);
 
   console.log("API Key from env:", import.meta.env.VITE_CLICKUP_API_KEY);
 
@@ -50,7 +48,7 @@ export function TaskInputScreen({ onSubmit }: TaskInputScreenProps) {
         <div className="space-y-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* API Key Input (if needed) */}
-            {showApiKey && (
+            {!import.meta.env.VITE_CLICKUP_API_KEY && (
               <div className="relative">
                 <Input
                   id="apiKey"

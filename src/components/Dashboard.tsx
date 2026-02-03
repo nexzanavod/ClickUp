@@ -115,18 +115,6 @@ export function Dashboard({ data, onBack }: DashboardProps) {
     tasks,
   }));
 
-  const COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899", "#06b6d4"];
-  
-  // Enhanced color palette for visual richness
-  const GRADIENT_COLORS = {
-    blue: "from-blue-500 to-cyan-500",
-    green: "from-green-500 to-emerald-500",
-    purple: "from-purple-500 to-pink-500",
-    orange: "from-orange-500 to-red-500",
-    indigo: "from-indigo-500 to-purple-500",
-    rose: "from-rose-500 to-pink-500",
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-100 via-purple-50 to-fuchsia-100 p-4 md:p-8">
       <div className="max-w-7xl mx-auto space-y-6">

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ClickUpTask, ClickUpTaskResponse, DashboardData } from '../types/clickup';
+import type { ClickUpTask, DashboardData } from '../types/clickup';
 
 const CLICKUP_API_BASE_URL = 'https://api.clickup.com/api/v2';
 
